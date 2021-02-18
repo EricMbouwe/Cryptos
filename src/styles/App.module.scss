@@ -1,9 +1,11 @@
 @import 'variables';
 @import 'mixins';
+@import 'globals';
 
 .App {
-  // composes: flex from './index.scss';
-  // composes: flex-jc-sb from './index.scss';
+  composes: flex;
+  composes: flex-jc-sb;
+  composes: flex-ai-c;
   text-align: center;
 }
 
