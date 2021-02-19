@@ -2,8 +2,9 @@ import * as actions from '../actions/actionTypes';
 
 const defaultState = {
   fetching: false,
-  cryptoList: [],
-  errorMessage: '',
+  coinList: [],
+  message: '',
+  remaining: 0,
 };
 
 const cryptoListReducer = (state = defaultState, action) => {
@@ -12,20 +13,21 @@ const cryptoListReducer = (state = defaultState, action) => {
       return {
         ...state,
         fetching: true,
-        errorMessage: '',
+        message: 'Fetching data...',
       };
     case actions.REQUESTING_FAILED:
       return {
         ...state,
         fetching: false,
-        errorMessage: 'Sorry something went wrong, retry!',
+        message: 'Sorry something went wrong, retry!',
       };
     case actions.RECEIVED_DATA:
       return {
         ...state,
         fetching: false,
-        cryptoList: action.payload.list,
-        errorMessage: '',
+        coinList: action.payload.coins,
+        message: 'Succes, data received!',
+        remaining: action.payload.remaining,
       };
     default:
       return state;
