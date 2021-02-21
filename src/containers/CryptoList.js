@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getCryptoList } from '../actions/actionCreator';
+import { getCoinList } from '../actions/actionCreator';
 
 const CryptoList = () => {
   const dispatch = useDispatch();
   const cryptoList = useSelector(state => state.cryptoList);
 
   const fetchData = page => {
-    dispatch(getCryptoList(page));
+    dispatch(getCoinList(page));
   };
 
   useEffect(() => {
@@ -16,33 +16,36 @@ const CryptoList = () => {
   }, []);
 
   const showData = () => {
-    const list = cryptoList.coinList;
+    const { coinList } = cryptoList;
 
-    if (list.length > 0) {
+    if (cryptoList.fetching) {
+      return <p>Loading...</p>;
+    }
+
+    if (cryptoList.message !== '') {
+      return <p>{cryptoList.message}</p>;
+    }
+
+    if (coinList.length > 0) {
       return (
-        <div className="list-wrapper">
-          {list.map(coin => (
+        <div className="list-box">
+          {coinList.map(coin => (
             <div key={coin.symbol} className="flex flex-jc-sb flex-ai-c">
               <div>{coin.name}</div>
               <div>
                 {coin.price}
-                <b><span>$</span></b>
+                <b>
+                  <span>$</span>
+                </b>
               </div>
-              <Link to={`crypto/${coin.name}`}>Open</Link>
+              <Link to={`coin/${coin.symbol}`}>Open</Link>
             </div>
           ))}
         </div>
       );
     }
 
-    if (cryptoList.loading) {
-      return <p>loading...</p>;
-    }
-
-    if (cryptoList.errorMessage !== '') {
-      return <p>{cryptoList.errorMessage}</p>;
-    }
-    return <p>unable to get data</p>;
+    return <p>Unable to get data</p>;
   };
 
   return (

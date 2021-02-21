@@ -9,11 +9,11 @@ function App() {
   return (
     <div className={styles.App}>
       <nav>
-        <NavLink to="/crypto/bitcoin">Search</NavLink>
+        <NavLink to="/">Search</NavLink>
       </nav>
       <Switch>
         <Route path="/" exact component={CryptoList} />
-        <Route path="/crypto/:crypto" component={Crypto} />
+        <Route path="/coin/:coin" component={Crypto} />
         <Redirect to="/" />
       </Switch>
     </div>
