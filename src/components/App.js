@@ -1,8 +1,8 @@
 import {
   Switch, Route, Redirect, NavLink,
 } from 'react-router-dom';
-import CryptoList from '../containers/CryptoList';
-import Crypto from '../containers/Crypto';
+import CoinList from '../containers/CoinList';
+import Coin from '../containers/Coin';
 import styles from '../styles/App.module.scss';
 
 function App() {
@@ -12,8 +12,8 @@ function App() {
         <NavLink to="/">Search</NavLink>
       </nav>
       <Switch>
-        <Route path="/" exact component={CryptoList} />
-        <Route path="/coin/:coin" component={Crypto} />
+        <Route path="/" exact component={CoinList} />
+        <Route path="/coin/:coin" component={Coin} />
         <Redirect to="/" />
       </Switch>
     </div>

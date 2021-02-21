@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
-import cryptoListReducer from './cryptoList';
-import cryptoReducer from './crypto';
+import CoinListReducer from './coinList';
+import CoinReducer from './coin';
 import filterReducer from './filter';
 
 const rootReducer = combineReducers({
-  cryptoList: cryptoListReducer,
-  crypto: cryptoReducer,
+  coinList: CoinListReducer,
+  coin: CoinReducer,
   filter: filterReducer,
 });
 

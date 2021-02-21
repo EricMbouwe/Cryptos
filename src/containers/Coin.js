@@ -3,25 +3,25 @@ import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getCoin } from '../actions/actionCreator';
 
-const Crypto = ({ match }) => {
+const Coin = ({ match }) => {
   const coinName = match.params.coin;
 
   const dispatch = useDispatch();
-  const cryptoUnit = useSelector(state => state.crypto);
+  const CoinState = useSelector(state => state.coin);
 
   useEffect(() => {
     dispatch(getCoin(coinName));
   }, []);
 
   const showData = () => {
-    const coin = cryptoUnit.data[coinName];
+    const coin = CoinState.data[coinName];
 
-    if (cryptoUnit.fetching) {
+    if (CoinState.fetching) {
       return <p>loading...</p>;
     }
 
-    if (cryptoUnit.message !== '') {
-      return <p>{cryptoUnit.message}</p>;
+    if (CoinState.message !== '') {
+      return <p>{CoinState.message}</p>;
     }
 
     if (coin && coin.error) {
@@ -29,7 +29,6 @@ const Crypto = ({ match }) => {
     }
 
     if (coin) {
-      console.log('CryptoUnit ', cryptoUnit);
       return (
         <div>
           <p>{coin.name}</p>
@@ -56,10 +55,10 @@ const Crypto = ({ match }) => {
   );
 };
 
-Crypto.propTypes = {
+Coin.propTypes = {
   match: PropTypes.oneOfType([PropTypes.object]).isRequired,
 };
 
 // match: PropTypes.objectOf(PropTypes.any).isRequired,
 // match: PropTypes.shape({}).isRequired,
-export default Crypto;
+export default Coin;

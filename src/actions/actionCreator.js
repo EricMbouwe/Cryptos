@@ -30,7 +30,6 @@ export const getCoinList = page => async dispatch => {
     dispatch(receivedData(response));
   } catch (e) {
     dispatch(requestingFailed());
-    console.log(e.message);
   }
 };
 
@@ -44,7 +43,6 @@ export function getCoin(coinSymbol) {
       dispatch(receivedUnitData(response, coinSymbol));
     } catch (e) {
       dispatch(requestingFailed());
-      console.log(e.message);
     }
   };
 }

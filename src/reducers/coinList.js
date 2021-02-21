@@ -2,12 +2,13 @@ import * as actions from '../actions/actionTypes';
 
 const defaultState = {
   fetching: false,
-  data: {},
+  data: [],
   message: '',
   log: '',
+  remaining: 0,
 };
 
-const cryptoReducer = (state = defaultState, action) => {
+const CoinListReducer = (state = defaultState, action) => {
   switch (action.type) {
     case actions.REQUESTING_DATA:
       return {
@@ -19,17 +20,14 @@ const cryptoReducer = (state = defaultState, action) => {
       return {
         ...state,
         fetching: false,
-        message: 'Sorry unable to get coin infos, retry!',
+        message: 'Sorry, unable to find data, retry!',
         log: 'fetching failed!',
       };
-    case actions.RECEIVED_UNIT_DATA:
+    case actions.RECEIVED_DATA:
       return {
         ...state,
         fetching: false,
-        data: {
-          ...state.data,
-          [action.coinSymbol]: action.payload,
-        },
+        data: action.payload.coins,
         log: 'Succes, data received!',
         remaining: action.payload.remaining,
       };
@@ -38,4 +36,4 @@ const cryptoReducer = (state = defaultState, action) => {
   }
 };
 
-export default cryptoReducer;
+export default CoinListReducer;
