@@ -55,7 +55,6 @@ const CoinList = ({ history }) => {
     <div>
       <h1>Coin List</h1>
       <div className="search-wrapper">
-        <p>Search</p>
         <input type="text" onChange={e => setSearch(e.target.value)} />
         <button type="button" onClick={() => history.push(`/coin/${search}`)}>
           search

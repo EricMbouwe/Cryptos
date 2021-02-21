@@ -9,7 +9,7 @@ function App() {
   return (
     <div className={styles.App}>
       <nav>
-        <NavLink to="/">Search</NavLink>
+        <NavLink to="/">Home</NavLink>
       </nav>
       <Switch>
         <Route path="/" exact component={CoinList} />
