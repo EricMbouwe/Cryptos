@@ -12,7 +12,7 @@ const Coin = ({ match }) => {
 
   useEffect(() => {
     dispatch(getCoin(coinName, filter));
-  }, [filter]);
+  }, [coinName, filter]);
 
   const showData = () => {
     const coin = CoinState.data[coinName];
@@ -32,15 +32,9 @@ const Coin = ({ match }) => {
     if (coin) {
       return (
         <div>
-          <p>{coin.name}</p>
-          <img src={coin.show_symbol} alt="" />
-          <p>{coin.symbol}</p>
-          <p>
-            {coin.price}
-            <span>
-              <b>$</b>
-            </span>
-          </p>
+          <span>{coin.name}</span>
+          <span>{coin.symbol}</span>
+          <span>{coin.price}</span>
         </div>
       );
     }
@@ -50,7 +44,6 @@ const Coin = ({ match }) => {
 
   return (
     <div>
-      <h1>COIN</h1>
       {showData()}
     </div>
   );

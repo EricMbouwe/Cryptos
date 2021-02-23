@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import ReactPaginate from 'react-paginate';
 import { getCoinList } from '../actions/actionCreator';
 
-const CoinList = ({ history }) => {
-  const [search, setSearch] = useState('');
-  const [searchResults, setSearchResult] = useState([]);
-
+const CoinList = () => {
   const dispatch = useDispatch();
   const CoinListState = useSelector(state => state.coinList);
   const filter = useSelector(state => state.filter);
@@ -52,42 +48,9 @@ const CoinList = ({ history }) => {
     return <p>Unable to get data</p>;
   };
 
-  const handleChange = e => {
-    const val = e.target.value;
-    setSearch(val);
-    const regex = new RegExp(val, 'i');
-    setSearchResult(CoinListState.data.filter(coin => regex.test(coin.name)));
-    // setSearchResult(
-    //   CoinListState.data.filter(coin => coin.name.toLowerCase().includes(val.toLowerCase())),
-    // );
-  };
-
-  const resultsList = searchResults.map(coin => (
-    <li key={coin.symbol}>
-      <Link to={`/coin/${coin.symbol}`}>
-        {coin.name}
-        {coin.symbol}
-      </Link>
-    </li>
-  ));
-
   return (
     <div>
-      <h1>Coin List</h1>
-      <div className="search-wrapper">
-        <input
-          type="text"
-          onChange={handleChange}
-          placeholder="Ex: Bitcoin, Tezos"
-          autoComplete="off"
-        />
-        <button type="button" onClick={() => history.push(`/coin/${search}`)}>
-          search
-        </button>
-        <div className="search-results">
-          <ul>{resultsList}</ul>
-        </div>
-      </div>
+      <h1>Best Prices</h1>
       {showData()}
       {CoinListState.data.length > 0 && (
         <ReactPaginate
@@ -100,10 +63,6 @@ const CoinList = ({ history }) => {
       )}
     </div>
   );
-};
-
-CoinList.propTypes = {
-  history: PropTypes.oneOfType([PropTypes.object]).isRequired,
 };
 
 export default CoinList;

@@ -5,6 +5,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 # Add Sass support
 ```npm install node-sass --save-dev```
 
+# NOTES
+<button type="button" onClick={() => history.push(`/coin/${search}`)}>
+          search
+</button>
+
+setSearchResult(
+    CoinListState.data.filter(coin => coin.name.toLowerCase().includes(val.toLowerCase())),
+);
+
 ## Available Scripts
 
 In the project directory, you can run:
