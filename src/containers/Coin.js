@@ -8,10 +8,11 @@ const Coin = ({ match }) => {
 
   const dispatch = useDispatch();
   const CoinState = useSelector(state => state.coin);
+  const filter = useSelector(state => state.filter);
 
   useEffect(() => {
-    dispatch(getCoin(coinName));
-  }, []);
+    dispatch(getCoin(coinName, filter));
+  }, [filter]);
 
   const showData = () => {
     const coin = CoinState.data[coinName];

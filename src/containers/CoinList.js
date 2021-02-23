@@ -11,20 +11,21 @@ const CoinList = ({ history }) => {
 
   const dispatch = useDispatch();
   const CoinListState = useSelector(state => state.coinList);
+  const filter = useSelector(state => state.filter);
 
-  const fetchData = page => {
-    dispatch(getCoinList(page));
+  const fetchData = (page, filter) => {
+    dispatch(getCoinList(page, filter));
   };
 
   useEffect(() => {
-    fetchData(1);
-  }, []);
+    fetchData(1, filter);
+  }, [filter]);
 
   const showData = () => {
     const { data } = CoinListState;
 
     if (CoinListState.fetching) {
-      return <p>Loading...</p>;
+      return <p>List Loading...</p>;
     }
 
     if (CoinListState.message !== '') {
@@ -33,16 +34,14 @@ const CoinList = ({ history }) => {
 
     if (data.length > 0) {
       return (
-        <div className="list-box">
+        <div className="list-wrapper">
           {data.map(coin => (
             <div key={coin.symbol} className="flex flex-jc-sb flex-ai-c">
-              <div>{coin.name}</div>
               <div>
-                {coin.price}
-                <b>
-                  <span>$</span>
-                </b>
+                <span>{coin.name}</span>
+                <span>{coin.symbol}</span>
               </div>
+              <div>{coin.price}</div>
               <Link to={`coin/${coin.symbol}`}>Open</Link>
             </div>
           ))}
