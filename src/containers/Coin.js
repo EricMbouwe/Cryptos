@@ -1,21 +1,22 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getCoin } from '../actions/actionCreator';
+import { getCoin, resetInputSearchValue } from '../actions/actionCreator';
 
 const Coin = ({ match }) => {
-  const coinName = match.params.coin;
+  const coinSymbol = match.params.coin;
 
   const dispatch = useDispatch();
   const CoinState = useSelector(state => state.coin);
   const filter = useSelector(state => state.filter);
 
   useEffect(() => {
-    dispatch(getCoin(coinName, filter));
-  }, [coinName, filter]);
+    dispatch(getCoin(coinSymbol, filter));
+    dispatch(resetInputSearchValue());
+  }, [coinSymbol, filter]);
 
   const showData = () => {
-    const coin = CoinState.data[coinName];
+    const coin = CoinState.data[coinSymbol];
 
     if (CoinState.fetching) {
       return <p>loading...</p>;
@@ -42,17 +43,11 @@ const Coin = ({ match }) => {
     return <p>Unable to get data</p>;
   };
 
-  return (
-    <div>
-      {showData()}
-    </div>
-  );
+  return <div>{showData()}</div>;
 };
 
 Coin.propTypes = {
   match: PropTypes.oneOfType([PropTypes.object]).isRequired,
 };
 
-// match: PropTypes.objectOf(PropTypes.any).isRequired,
-// match: PropTypes.shape({}).isRequired,
 export default Coin;

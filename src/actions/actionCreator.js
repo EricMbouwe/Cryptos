@@ -20,7 +20,7 @@ const receivedUnitData = (response, symbol) => ({
 });
 
 // Cryptos actions
-export const getCoinList = (page, curFilter) => async dispatch => {
+export const getCoinList = (curFilter, page = 1) => async dispatch => {
   try {
     dispatch(requestingData());
     const response = await axios.get(
@@ -50,4 +50,17 @@ export const changeFilter = value => ({
   payload: {
     value,
   },
+});
+
+// Search Input action
+export const changeInputSearchValue = value => ({
+  type: actions.CHANGE_SEARCH_INPUT,
+  payload: {
+    value,
+  },
+});
+
+export const resetInputSearchValue = () => ({
+  type: actions.RESET_SEARCH_INPUT,
+  payload: '',
 });

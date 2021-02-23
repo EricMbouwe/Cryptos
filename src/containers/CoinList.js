@@ -2,19 +2,20 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
-import { getCoinList } from '../actions/actionCreator';
+import { getCoinList, resetInputSearchValue } from '../actions/actionCreator';
 
 const CoinList = () => {
   const dispatch = useDispatch();
   const CoinListState = useSelector(state => state.coinList);
   const filter = useSelector(state => state.filter);
 
-  const fetchData = (page, filter) => {
-    dispatch(getCoinList(page, filter));
+  const fetchData = (filter, page = 1) => {
+    dispatch(getCoinList(filter, page));
+    dispatch(resetInputSearchValue());
   };
 
   useEffect(() => {
-    fetchData(1, filter);
+    fetchData(filter);
   }, [filter]);
 
   const showData = () => {
@@ -51,13 +52,14 @@ const CoinList = () => {
   return (
     <div>
       <h1>Best Prices</h1>
+
       {showData()}
       {CoinListState.data.length > 0 && (
         <ReactPaginate
           pageCount={44}
           pageRangeDisplayed={2}
           marginPagesDisplayed={2}
-          onPageChange={data => fetchData(data.selected + 1)}
+          onPageChange={data => fetchData(filter, data.selected + 1)}
           containerClassName="pagination"
         />
       )}
