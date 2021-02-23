@@ -55,9 +55,7 @@ export const changeFilter = value => ({
 // Search Input action
 export const changeInputSearchValue = value => ({
   type: actions.CHANGE_SEARCH_INPUT,
-  payload: {
-    value,
-  },
+  payload: value,
 });
 
 export const resetInputSearchValue = () => ({

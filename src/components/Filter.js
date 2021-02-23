@@ -4,7 +4,7 @@ import { changeFilter } from '../actions/actionCreator';
 
 const Filter = () => {
   const dispatch = useDispatch();
-  const currencies = ['USD', 'EUR', 'GBP', 'CFH', 'XAF', 'DMK', 'JPY'];
+  const currencies = ['USD', 'EUR', 'GBP', 'XAF', 'JPY', 'CNY'];
 
   const handleSelection = e => {
     const selectedValue = e.target.value;

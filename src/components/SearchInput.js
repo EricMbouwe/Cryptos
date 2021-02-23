@@ -13,7 +13,11 @@ const SearchInput = () => {
     const val = e.target.value;
     dispatch(changeInputSearchValue(val));
     const regex = new RegExp(val, 'i');
-    setSearchResults(CoinListState.data.filter(coin => regex.test(coin.name)));
+    setSearchResults(
+      CoinListState.data.filter(
+        coin => regex.test(coin.name) || regex.test(coin.symbol),
+      ),
+    );
   };
 
   const displaySearchList = searchResults.map(coin => (
@@ -36,9 +40,7 @@ const SearchInput = () => {
       />
 
       <div className="search-results">
-        <ul>
-          {SearchInputState !== ' ' && SearchInputState !== '' && displaySearchList}
-        </ul>
+        <ul>{SearchInputState !== ' ' && SearchInputState !== '' && displaySearchList}</ul>
       </div>
     </div>
   );

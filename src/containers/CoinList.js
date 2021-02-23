@@ -34,6 +34,7 @@ const CoinList = () => {
         <div className="list-wrapper">
           {data.map(coin => (
             <div key={coin.symbol} className="flex flex-jc-sb flex-ai-c">
+              <div>{coin.rank}</div>
               <div>
                 <span>{coin.name}</span>
                 <span>{coin.symbol}</span>
