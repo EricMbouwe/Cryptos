@@ -32,17 +32,28 @@ const CoinList = () => {
     if (data.length > 0) {
       return (
         <div className="list-wrapper">
-          {data.map(coin => (
-            <div key={coin.symbol} className="flex flex-jc-sb flex-ai-c">
-              <div>{coin.rank}</div>
-              <div>
-                <span>{coin.name}</span>
-                <span>{coin.symbol}</span>
+          {data.map(coin => {
+            const coinName = coin.name.toLowerCase();
+            const formatedName = coinName.replace(/\s/g, '-');
+
+            return (
+              <div key={coin.symbol} className="flex flex-jc-sb flex-ai-c">
+                <div>{coin.rank}</div>
+                <div>
+                  <img
+                    src={`https://cryptologos.cc/logos/${formatedName}-${coin.symbol.toLowerCase()}-logo.png?v=010`}
+                    alt="Coin Logo"
+                  />
+                  <span>{coin.name}</span>
+                  <b>
+                    <span>{coin.symbol}</span>
+                  </b>
+                </div>
+                <div>{coin.price}</div>
+                <Link to={`coin/${coin.symbol}`}>Open</Link>
               </div>
-              <div>{coin.price}</div>
-              <Link to={`coin/${coin.symbol}`}>Open</Link>
-            </div>
-          ))}
+            );
+          })}
         </div>
       );
     }
@@ -57,9 +68,9 @@ const CoinList = () => {
       {showData()}
       {CoinListState.data.length > 0 && (
         <ReactPaginate
-          pageCount={44}
+          pageCount={64}
           pageRangeDisplayed={2}
-          marginPagesDisplayed={2}
+          marginPagesDisplayed={1}
           onPageChange={data => fetchData(filter, data.selected + 1)}
           containerClassName="pagination"
         />

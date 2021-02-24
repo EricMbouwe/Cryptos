@@ -31,8 +31,15 @@ const Coin = ({ match }) => {
     }
 
     if (coin) {
+      const coinName = coin.name.toLowerCase();
+      const formatedName = coinName.replace(/\s/g, '-');
+
       return (
         <div>
+          <img
+            src={`https://cryptologos.cc/logos/${formatedName}-${coin.symbol.toLowerCase()}-logo.svg?v=010`}
+            alt="Coin Logo"
+          />
           <span>{coin.name}</span>
           <span>{coin.symbol}</span>
           <span>{coin.price}</span>
