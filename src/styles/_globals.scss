@@ -55,7 +55,7 @@ h3 {
 
 h1 {
   font-size: 2.31rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0;
 
   @include breakpoint-up(large) {
     font-size: $font-xlg;
@@ -81,10 +81,16 @@ a,
 a:visited,
 a:hover {
   text-decoration: none;
+  color: inherit;
 }
 
 ul {
   list-style-type: none;
+}
+
+.img-fluid {
+  max-width: 3%;
+  height: auto;
 }
 
 // Spacing

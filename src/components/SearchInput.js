@@ -20,14 +20,32 @@ const SearchInput = () => {
     );
   };
 
-  const displaySearchList = searchResults.map(coin => (
-    <li key={coin.symbol}>
-      <Link to={`/coin/${coin.symbol}`}>
-        <span>{coin.name}</span>
-        <span>{coin.symbol}</span>
-      </Link>
-    </li>
-  ));
+  const displaySearchList = searchResults.map(coin => {
+    const coinName = coin.name.toLowerCase();
+    const formatedName = coinName.replace(/\s/g, '-');
+
+    return (
+      <li key={coin.symbol}>
+        <Link to={`/coin/${coin.symbol}`}>
+          <div className="coin-details">
+            <img
+              src={`https://cryptologos.cc/logos/${formatedName}-${coin.symbol.toLowerCase()}-logo.png?v=010`}
+              alt=""
+              className="img-fluid"
+            />
+            <span>
+              <span>{coin.name}</span>
+              <span className="symbol">
+                (
+                {coin.symbol}
+                )
+              </span>
+            </span>
+          </div>
+        </Link>
+      </li>
+    );
+  });
 
   return (
     <div className="search-wrapper">
@@ -35,12 +53,12 @@ const SearchInput = () => {
         type="text"
         onChange={handleChange}
         value={SearchInputState}
-        placeholder="Ex: Bitcoin, Tezos"
+        placeholder="Find a coin Ex: Bitcoin, Tezos"
         autoComplete="off"
       />
 
-      <div className="search-results">
-        <ul>{SearchInputState !== ' ' && SearchInputState !== '' && displaySearchList}</ul>
+      <div>
+        <ul className="search-results">{SearchInputState !== ' ' && SearchInputState !== '' && displaySearchList}</ul>
       </div>
     </div>
   );

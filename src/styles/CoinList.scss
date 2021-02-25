@@ -1,0 +1,13 @@
+@import 'variables';
+@import 'mixins';
+
+.coinList {
+  border: 1px solid green;
+  margin-top: 2rem !important;
+
+  &--title {
+    font-size: $font-lg;
+    color: $grayishBlue;
+    font-weight: 600;
+  }
+}
