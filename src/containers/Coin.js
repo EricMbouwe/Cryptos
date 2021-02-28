@@ -39,17 +39,35 @@ const Coin = ({ match }) => {
     if (coin) {
       return (
         <div className="container">
-          <img src={coin.logo_url} alt="" className="img-fluid" />
-          <span>{coin.name}</span>
-          <span>{coin.symbol}</span>
-          <div className="price">
-            {filter === 'USD' && <span>$ </span>}
-            {filter === 'EUR' && <span>€ </span>}
-            {filter === 'GBP' && <span>£ </span>}
-            {filter === 'XAF' && <span>XAF </span>}
-            {filter === 'JPY' && <span>¥ </span>}
-            {filter === 'CNY' && <span>¥ </span>}
-            <span>{coin.price}</span>
+          <div className="infos flex flex-ai-c">
+            <img src={coin.logo_url} alt="" className="img-fluid" />
+            <span>{coin.name}</span>
+            <span>{coin.symbol}</span>
+            <div className="price">
+              {filter === 'USD' && <span>$ </span>}
+              {filter === 'EUR' && <span>€ </span>}
+              {filter === 'GBP' && <span>£ </span>}
+              {filter === 'XAF' && <span>XAF </span>}
+              {filter === 'JPY' && <span>¥ </span>}
+              {filter === 'CNY' && <span>¥ </span>}
+              <span>{coin.price}</span>
+            </div>
+          </div>
+          <div className="suppl flex">
+            <span>
+              height:
+              {filter === 'USD' && <span> $ </span>}
+              {filter === 'EUR' && <span> € </span>}
+              {filter === 'GBP' && <span> £ </span>}
+              {filter === 'XAF' && <span> XAF </span>}
+              {filter === 'JPY' && <span> ¥ </span>}
+              {filter === 'CNY' && <span> ¥ </span>}
+              <span className="height">{coin.high}</span>
+            </span>
+            <span>
+              max supply:
+              <span className="max-supply">{coin.max_supply}</span>
+            </span>
           </div>
           <div className="description">
             <p>{coinDescription}</p>

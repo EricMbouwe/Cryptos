@@ -4,12 +4,46 @@
 .coin {
   margin-top: 4rem;
 
-  img {
-    width: 30px;
-    margin-right: 1rem;
+  .infos {
+    font-size: 2rem;
+
+    img {
+      width: 50px;
+      margin-right: 1rem;
+    }
+
+    > span:first-of-type {
+      margin-right: 0.5rem;
+      font-weight: 600;
+    }
+
+    .price {
+      margin-left: 1rem;
+      font-weight: 600;
+    }
   }
 
-  span {
-    margin-right: 1rem;
+  .suppl {
+    margin-top: 1rem;
+
+    span {
+      font-size: .9rem;
+      font-weight: 600;
+    }
+
+    .max-supply {
+      margin-left: .5rem;
+    }
+
+    .height {
+      margin-right: .5rem;
+    }
+  }
+
+  .description {
+    p {
+      font-size: 1rem;
+      line-height: 1.9;
+    }
   }
 }
