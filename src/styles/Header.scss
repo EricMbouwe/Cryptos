@@ -9,7 +9,7 @@
 
   nav {
     background-color: #121d33;
-    padding: 1.5rem 0;
+    padding: 1rem;
 
     a {
       color: #fff;
@@ -87,7 +87,7 @@
           }
 
           li {
-            padding: 0.5rem 1.5rem;
+            padding: 0.7rem 1.5rem;
 
             &:hover {
               background-color: $lightGrayishBlue;
@@ -98,9 +98,9 @@
               align-items: center;
 
               img {
-                max-width: 6%;
+                width: 5px;
                 margin-right: 1rem;
-                flex-basis: 20%;
+                flex-basis: 8%;
               }
 
               > span {

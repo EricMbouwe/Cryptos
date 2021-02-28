@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
@@ -9,15 +9,16 @@ const CoinList = () => {
   const dispatch = useDispatch();
   const CoinListState = useSelector(state => state.coinList);
   const filter = useSelector(state => state.filter);
+  const [page, setPage] = useState(1);
 
-  const fetchData = (filter, page = 1) => {
+  const fetchData = () => {
     dispatch(getCoinList(filter, page));
     dispatch(resetInputSearchValue());
   };
 
   useEffect(() => {
-    fetchData(filter);
-  }, [filter]);
+    fetchData();
+  }, [filter, page]);
 
   const showData = () => {
     const { data } = CoinListState;
@@ -33,32 +34,29 @@ const CoinList = () => {
     if (data.length > 0) {
       return (
         <div className="coinList--wrapper">
-          {data.map(coin => {
-            const coinName = coin.name.toLowerCase();
-            const formatedName = coinName.replace(/\s/g, '-');
-
-            return (
-              <div
-                key={coin.symbol}
-                className="flex flex-jc-sb flex-ai-c coinList--coin"
-              >
+          {data.map(coin => (
+            <Link key={coin.id} to={`coin/${coin.symbol}`}>
+              <div className="flex flex-jc-sb flex-ai-c coinList--coin">
                 <div className="rank">{coin.rank}</div>
-                <div className="details">
-                  <img
-                    src={`https://cryptologos.cc/logos/${formatedName}-${coin.symbol.toLowerCase()}-logo.png?v=010`}
-                    alt=""
-                    className="img-fluid"
-                  />
+                <div className="details flex flex-jc-c flex-ai-c">
+                  <img src={coin.logo_url} alt="" className="img-fluid" />
                   <span>{coin.name}</span>
                   <b>
                     <span>{coin.symbol}</span>
                   </b>
                 </div>
-                <div className="price">{coin.price}</div>
-                <Link to={`coin/${coin.symbol}`}>Open</Link>
+                <div className="price">
+                  {filter === 'USD' && <span>$ </span>}
+                  {filter === 'EUR' && <span>€ </span>}
+                  {filter === 'GBP' && <span>£ </span>}
+                  {filter === 'XAF' && <span>XAF </span>}
+                  {filter === 'JPY' && <span>¥ </span>}
+                  {filter === 'CNY' && <span>¥ </span>}
+                  {coin.price}
+                </div>
               </div>
-            );
-          })}
+            </Link>
+          ))}
         </div>
       );
     }
@@ -72,11 +70,11 @@ const CoinList = () => {
       {showData()}
       {CoinListState.data.length > 0 && (
         <ReactPaginate
-          pageCount={64}
+          pageCount={150}
           pageRangeDisplayed={2}
           marginPagesDisplayed={1}
-          onPageChange={data => fetchData(filter, data.selected + 1)}
-          containerClassName="pagination"
+          onPageChange={data => setPage(data.selected + 1)}
+          containerClassName="coinList--pagination"
         />
       )}
     </div>

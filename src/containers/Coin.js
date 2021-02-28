@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getCoin, resetInputSearchValue } from '../actions/actionCreator';
+import '../styles/Coin.scss';
 
 const Coin = ({ match }) => {
   const coinSymbol = match.params.coin;
@@ -13,6 +14,7 @@ const Coin = ({ match }) => {
   useEffect(() => {
     dispatch(getCoin(coinSymbol, filter));
     dispatch(resetInputSearchValue());
+    console.log('CoinState', CoinState);
   }, [coinSymbol, filter]);
 
   const showData = () => {
@@ -31,18 +33,20 @@ const Coin = ({ match }) => {
     }
 
     if (coin) {
-      const coinName = coin.name.toLowerCase();
-      const formatedName = coinName.replace(/\s/g, '-');
-
       return (
-        <div>
-          <img
-            src={`https://cryptologos.cc/logos/${formatedName}-${coin.symbol.toLowerCase()}-logo.svg?v=010`}
-            alt="Coin Logo"
-          />
+        <div className="coin flex flex-jc-c flex-ai-c">
+          <img src={coin.logo_url} alt="" className="img-fluid" />
           <span>{coin.name}</span>
           <span>{coin.symbol}</span>
-          <span>{coin.price}</span>
+          <div className="price">
+            {filter === 'USD' && <span>$ </span>}
+            {filter === 'EUR' && <span>€ </span>}
+            {filter === 'GBP' && <span>£ </span>}
+            {filter === 'XAF' && <span>XAF </span>}
+            {filter === 'JPY' && <span>¥ </span>}
+            {filter === 'CNY' && <span>¥ </span>}
+            <span>{coin.price}</span>
+          </div>
         </div>
       );
     }
@@ -50,7 +54,7 @@ const Coin = ({ match }) => {
     return <p>Unable to get data</p>;
   };
 
-  return <div>{showData()}</div>;
+  return <div className="flex flex-jc-c flex-ai-c">{showData()}</div>;
 };
 
 Coin.propTypes = {

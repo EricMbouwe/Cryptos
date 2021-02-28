@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { changeInputSearchValue } from '../actions/actionCreator';
@@ -6,46 +6,43 @@ import { changeInputSearchValue } from '../actions/actionCreator';
 const SearchInput = () => {
   const [searchResults, setSearchResults] = useState([]);
   const SearchInputState = useSelector(state => state.searchInput);
-  const CoinListState = useSelector(state => state.coinList);
+  const fullCoinListState = useSelector(state => state.coinList);
+  // const fullCoinListState = useSelector(state => state.fullCoinList);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    // dispatch(getAllCoins());
+    // console.log('FULL COIN LIST', fullCoinListState);
+  }, []);
 
   const handleChange = e => {
     const val = e.target.value;
     dispatch(changeInputSearchValue(val));
     const regex = new RegExp(val, 'i');
     setSearchResults(
-      CoinListState.data.filter(
+      fullCoinListState.data.filter(
         coin => regex.test(coin.name) || regex.test(coin.symbol),
       ),
     );
   };
 
-  const displaySearchList = searchResults.map(coin => {
-    const coinName = coin.name.toLowerCase();
-    const formatedName = coinName.replace(/\s/g, '-');
-
-    return (
-      <li key={coin.symbol}>
-        <Link to={`/coin/${coin.symbol}`}>
-          <div className="coin-details">
-            <img
-              src={`https://cryptologos.cc/logos/${formatedName}-${coin.symbol.toLowerCase()}-logo.png?v=010`}
-              alt=""
-              className="img-fluid"
-            />
-            <span>
-              <span>{coin.name}</span>
-              <span className="symbol">
-                (
-                {coin.symbol}
-                )
-              </span>
+  const displaySearchList = searchResults.map(coin => (
+    <li key={coin.id}>
+      <Link to={`/coin/${coin.symbol}`}>
+        <div className="coin-details">
+          <img src={coin.logo_url} alt="" className="img-fluid" />
+          <span>
+            <span>{coin.name}</span>
+            <span className="symbol">
+              (
+              {coin.symbol}
+              )
             </span>
-          </div>
-        </Link>
-      </li>
-    );
-  });
+          </span>
+        </div>
+      </Link>
+    </li>
+  ));
 
   return (
     <div className="search-wrapper">
@@ -58,7 +55,9 @@ const SearchInput = () => {
       />
 
       <div>
-        <ul className="search-results">{SearchInputState !== ' ' && SearchInputState !== '' && displaySearchList}</ul>
+        <ul className="search-results">
+          {SearchInputState !== ' ' && SearchInputState !== '' && displaySearchList}
+        </ul>
       </div>
     </div>
   );

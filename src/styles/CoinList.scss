@@ -2,12 +2,52 @@
 @import 'mixins';
 
 .coinList {
-  border: 1px solid green;
   margin-top: 2rem !important;
 
   &--title {
     font-size: $font-lg;
     color: $grayishBlue;
     font-weight: 600;
+    margin-bottom: 2rem;
+  }
+
+  &--coin {
+    
+    .details {
+      img {
+        width: 30px;
+      }
+    }
+  }
+
+  &--pagination {
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+    margin: 2.5rem auto;
+    padding: .5rem 2rem;
+    background-color: $veryLightGray;
+    border-radius: 10px;
+
+    li {
+      padding: .5rem 1rem;
+      border-radius: 10px;
+
+      &.selected {
+        background-color: $grayishBlue;
+
+        a {
+          color: $white;
+        }
+      }
+
+      a {
+        cursor: pointer;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
   }
 }

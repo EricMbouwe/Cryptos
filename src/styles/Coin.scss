@@ -1,0 +1,15 @@
+@import 'variables';
+@import 'mixins';
+
+.coin {
+  margin-top: 4rem;
+
+  img {
+    width: 30px;
+    margin-right: 1rem;
+  }
+
+  span {
+    margin-right: 1rem;
+  }
+}

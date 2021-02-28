@@ -5,7 +5,6 @@ const defaultState = {
   data: [],
   message: '',
   log: '',
-  remaining: 0,
 };
 
 const CoinListReducer = (state = defaultState, action) => {
@@ -27,9 +26,8 @@ const CoinListReducer = (state = defaultState, action) => {
       return {
         ...state,
         fetching: false,
-        data: action.payload.coins,
+        data: action.payload,
         log: 'Succes, data received!',
-        remaining: action.payload.remaining,
       };
     default:
       return state;
