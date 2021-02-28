@@ -14,27 +14,31 @@ const Coin = ({ match }) => {
   useEffect(() => {
     dispatch(getCoin(coinSymbol, filter));
     dispatch(resetInputSearchValue());
-    console.log('CoinState', CoinState);
   }, [coinSymbol, filter]);
 
   const showData = () => {
     const coin = CoinState.data[coinSymbol];
+    const coinDescription = CoinState.desc;
 
     if (CoinState.fetching) {
-      return <p>loading...</p>;
+      return (
+        <div className="container">
+          <p>loading...</p>
+        </div>
+      );
     }
 
     if (CoinState.message !== '') {
-      return <p>{CoinState.message}</p>;
+      return <p className="container">{CoinState.message}</p>;
     }
 
     if (coin && coin.error) {
-      return <p>{coin.error}</p>;
+      return <p className="container">{coin.error}</p>;
     }
 
     if (coin) {
       return (
-        <div className="coin flex flex-jc-c flex-ai-c">
+        <div className="container">
           <img src={coin.logo_url} alt="" className="img-fluid" />
           <span>{coin.name}</span>
           <span>{coin.symbol}</span>
@@ -47,14 +51,17 @@ const Coin = ({ match }) => {
             {filter === 'CNY' && <span>¥ </span>}
             <span>{coin.price}</span>
           </div>
+          <div className="description">
+            <p>{coinDescription}</p>
+          </div>
         </div>
       );
     }
 
-    return <p>Unable to get data</p>;
+    return <p className="container">Unable to get data</p>;
   };
 
-  return <div className="flex flex-jc-c flex-ai-c">{showData()}</div>;
+  return <div className="coin">{showData()}</div>;
 };
 
 Coin.propTypes = {

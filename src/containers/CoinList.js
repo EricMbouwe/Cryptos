@@ -34,26 +34,45 @@ const CoinList = () => {
     if (data.length > 0) {
       return (
         <div className="coinList--wrapper">
+          <div className="titles">
+            <h4>Rank</h4>
+            <h4>Name</h4>
+            <h4>Price</h4>
+            <h4>Market cap</h4>
+            <h4>Change (24h)</h4>
+          </div>
           {data.map(coin => (
-            <Link key={coin.id} to={`coin/${coin.symbol}`}>
-              <div className="flex flex-jc-sb flex-ai-c coinList--coin">
-                <div className="rank">{coin.rank}</div>
-                <div className="details flex flex-jc-c flex-ai-c">
-                  <img src={coin.logo_url} alt="" className="img-fluid" />
-                  <span>{coin.name}</span>
-                  <b>
-                    <span>{coin.symbol}</span>
-                  </b>
-                </div>
-                <div className="price">
-                  {filter === 'USD' && <span>$ </span>}
-                  {filter === 'EUR' && <span>€ </span>}
-                  {filter === 'GBP' && <span>£ </span>}
-                  {filter === 'XAF' && <span>XAF </span>}
-                  {filter === 'JPY' && <span>¥ </span>}
-                  {filter === 'CNY' && <span>¥ </span>}
-                  {coin.price}
-                </div>
+            <Link
+              key={coin.id}
+              to={`coin/${coin.symbol}`}
+              className="coinList--row"
+            >
+              <div className="rank flex flex-ai-c">{coin.rank}</div>
+              <div className="details flex flex-ai-c">
+                <img src={coin.logo_url} alt="" className="img-fluid" />
+                <span>{coin.name}</span>
+                <span>{coin.symbol}</span>
+              </div>
+              <div className="price flex flex-ai-c">
+                {filter === 'USD' && <span>$ </span>}
+                {filter === 'EUR' && <span>€ </span>}
+                {filter === 'GBP' && <span>£ </span>}
+                {filter === 'XAF' && <span>XAF </span>}
+                {filter === 'JPY' && <span>¥ </span>}
+                {filter === 'CNY' && <span>¥ </span>}
+                <span>{coin.price}</span>
+              </div>
+              <div className="market-cap flex flex-ai-c">
+                {filter === 'USD' && <span>$ </span>}
+                {filter === 'EUR' && <span>€ </span>}
+                {filter === 'GBP' && <span>£ </span>}
+                {filter === 'XAF' && <span>XAF </span>}
+                {filter === 'JPY' && <span>¥ </span>}
+                {filter === 'CNY' && <span>¥ </span>}
+                <span>{coin.market_cap}</span>
+              </div>
+              <div className="change flex flex-ai-c">
+                {coin['1d'].price_change_pct}
               </div>
             </Link>
           ))}
@@ -70,7 +89,7 @@ const CoinList = () => {
       {showData()}
       {CoinListState.data.length > 0 && (
         <ReactPaginate
-          pageCount={150}
+          pageCount={200}
           pageRangeDisplayed={2}
           marginPagesDisplayed={1}
           onPageChange={data => setPage(data.selected + 1)}

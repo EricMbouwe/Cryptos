@@ -3,6 +3,7 @@ import * as actions from '../actions/actionTypes';
 const defaultState = {
   fetching: false,
   data: {},
+  desc: '',
   message: '',
   log: '',
 };
@@ -30,6 +31,7 @@ const CoinReducer = (state = defaultState, action) => {
           ...state.data,
           [action.coinSymbol]: action.payload[0],
         },
+        desc: action.desc[0].description,
         log: 'Succes, data received!',
       };
     default:

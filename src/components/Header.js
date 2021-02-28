@@ -16,7 +16,7 @@ const Header = () => (
 
     <div className="line2">
       <div className="container">
-        <h1 className="title">Cryptos prices</h1>
+        <h1 className="title">Cryptos Info</h1>
         <div className="searchFilterWrapper">
           <SearchInput />
           <Filter />
