@@ -3,6 +3,13 @@ import * as actions from './actionTypes';
 
 const key = '75148c0f430a70d9116c78b9c9431efe';
 const perPage = 20;
+const data = {
+  headers: {
+    Accept: 'Application/json',
+    'Content-Type': 'application/json',
+    Origin: 'http://react-cryptos.herokuapp.com/',
+  },
+};
 
 // Requests actions!
 const requestingData = () => ({ type: actions.REQUESTING_DATA });
@@ -32,6 +39,7 @@ export const getAllCoins = () => async dispatch => {
     dispatch(requestingData());
     const response = await axios.get(
       `https://api.nomics.com/v1/currencies/ticker?key=${key}`,
+      data,
     );
     dispatch(receivedALLData(response));
   } catch (e) {
@@ -44,6 +52,7 @@ export const getCoinList = (curFilter, page) => async dispatch => {
     dispatch(requestingData());
     const response = await axios.get(
       `https://api.nomics.com/v1/currencies/ticker?key=${key}&interval=1d,30d&convert=${curFilter}&per-page=${perPage}&page=${page}`,
+      data,
     );
     dispatch(receivedData(response));
   } catch (e) {
@@ -56,9 +65,11 @@ export const getCoin = (coinSymbol, curFilter) => async dispatch => {
     dispatch(requestingData());
     const response1 = await axios.get(
       `https://api.nomics.com/v1/currencies/ticker?key=${key}&ids=${coinSymbol}&interval=1d,30d&convert=${curFilter}`,
+      data,
     );
     const response2 = await axios.get(
       `https://api.nomics.com/v1/currencies?key=${key}&ids=${coinSymbol}&attributes=description`,
+      data,
     );
     dispatch(receivedUnitData(response1, response2, coinSymbol, curFilter));
   } catch (e) {
