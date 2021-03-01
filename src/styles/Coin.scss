@@ -9,6 +9,23 @@
     height: 50vh;
   }
 
+  .suppl {
+    margin-top: 1rem;
+
+    span {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .max-supply {
+      margin-left: 0.5rem;
+    }
+
+    .height {
+      margin-right: 0.5rem;
+    }
+  }
+
   .infos {
     font-size: 2rem;
 
@@ -25,23 +42,6 @@
     .price {
       margin-left: 1rem;
       font-weight: 600;
-    }
-  }
-
-  .suppl {
-    margin-top: 1rem;
-
-    span {
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-
-    .max-supply {
-      margin-left: 0.5rem;
-    }
-
-    .height {
-      margin-right: 0.5rem;
     }
   }
 

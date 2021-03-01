@@ -17,7 +17,7 @@ The app is using [Nomics API](https://nomics.com/docs/) as API.
 Please check [live demo of the project.](http://react-cryptos.herokuapp.com/)
 
 ## Presentation
-You may watch [my presentation video.]()
+Watch [my presentation video.]()
 
 ## Getting Started
 
@@ -45,7 +45,7 @@ Make sure Node.js is running on your local machine.
 
 - Clone this repository
 - Open terminal
-- Change directory by using `cd bewevi`
+- Change directory by using `cd cryptos`
 - Run `npm install`
 - Run `npm test` to test all files
 

@@ -45,6 +45,14 @@
       padding: 0 1rem;
     }
 
+    .price,
+    .market-cap {
+      > span {
+        margin-right: 0.5rem;
+        font-weight: 600;
+      }
+    }
+
     .details {
       img {
         width: 25px;
@@ -54,13 +62,6 @@
       span:nth-of-type(2) {
         font-weight: 800;
         margin-left: 10px;
-      }
-    }
-
-    .price, .market-cap {
-      > span {
-        margin-right: 0.5rem;
-        font-weight: 600;
       }
     }
   }
@@ -78,19 +79,19 @@
       padding: 0.5rem 1rem;
       border-radius: 10px;
 
-      &.selected {
-        background-color: $grayishBlue;
-
-        a {
-          color: $white;
-        }
-      }
-
       a {
         cursor: pointer;
 
         &:focus {
           outline: none;
+        }
+      }
+
+      &.selected {
+        background-color: $grayishBlue;
+
+        a {
+          color: $white;
         }
       }
     }
