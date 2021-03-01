@@ -11,7 +11,7 @@ The project includes these features:
 
 The app is using [Nomics API](https://nomics.com/docs/) as API.
 
-![screenshot](./public/)
+![screenshot](./public/cryptos.gif)
 
 ## Live Demo
 Please check [live demo of the project.](http://react-cryptos.herokuapp.com/)
