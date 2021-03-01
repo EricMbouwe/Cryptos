@@ -4,6 +4,11 @@
 .coinList {
   margin-top: 2rem !important;
 
+  &--spiner {
+    flex-direction: column;
+    height: 50vh;
+  }
+
   &--wrapper {
     .titles {
       display: grid;

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+import Loader from 'react-loader-spinner';
 import { getCoin, resetInputSearchValue } from '../actions/actionCreator';
 import '../styles/Coin.scss';
 
@@ -22,8 +23,9 @@ const Coin = ({ match }) => {
 
     if (CoinState.fetching) {
       return (
-        <div className="container">
-          <p>loading...</p>
+        <div className="container coin--spinner flex flex-jc-c flex-ai-c">
+          <Loader type="Grid" color="#121d33" height={100} width={100} />
+          <p>Loading description</p>
         </div>
       );
     }

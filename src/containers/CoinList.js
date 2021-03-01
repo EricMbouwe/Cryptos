@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
+import Loader from 'react-loader-spinner';
 import { getCoinList, resetInputSearchValue } from '../actions/actionCreator';
 import '../styles/CoinList.scss';
 
@@ -24,7 +25,12 @@ const CoinList = () => {
     const { data } = CoinListState;
 
     if (CoinListState.fetching) {
-      return <p>List Loading...</p>;
+      return (
+        <div className="coinList--spiner flex flex-jc-c flex-ai-c">
+          <Loader type="Grid" color="#121d33" height={100} width={100} />
+          <p>Loading List</p>
+        </div>
+      );
     }
 
     if (CoinListState.message !== '') {
@@ -72,7 +78,7 @@ const CoinList = () => {
                 <span>{coin.market_cap}</span>
               </div>
               <div className="change flex flex-ai-c">
-                {coin['1d'].price_change_pct}
+                {coin['1d']?.price_change_pct}
               </div>
             </Link>
           ))}

@@ -58,7 +58,7 @@ export const getCoin = (coinSymbol, curFilter) => async dispatch => {
       `https://api.nomics.com/v1/currencies/ticker?key=${key}&ids=${coinSymbol}&interval=1d,30d&convert=${curFilter}`,
     );
     const response2 = await axios.get(
-      `https://api.nomics.com/v1/currencies?key=${key}&ids=${coinSymbol}&attributes=id,name,description`,
+      `https://api.nomics.com/v1/currencies?key=${key}&ids=${coinSymbol}&attributes=description`,
     );
     dispatch(receivedUnitData(response1, response2, coinSymbol, curFilter));
   } catch (e) {

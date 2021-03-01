@@ -4,6 +4,11 @@
 .coin {
   margin-top: 4rem;
 
+  &--spinner {
+    flex-direction: column;
+    height: 50vh;
+  }
+
   .infos {
     font-size: 2rem;
 
@@ -27,21 +32,22 @@
     margin-top: 1rem;
 
     span {
-      font-size: .9rem;
+      font-size: 0.9rem;
       font-weight: 600;
     }
 
     .max-supply {
-      margin-left: .5rem;
+      margin-left: 0.5rem;
     }
 
     .height {
-      margin-right: .5rem;
+      margin-right: 0.5rem;
     }
   }
 
   .description {
     p {
+      text-align: justify;
       font-size: 1rem;
       line-height: 1.9;
     }
