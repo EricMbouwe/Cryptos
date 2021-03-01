@@ -1,7 +1,7 @@
 # CRYPTOS
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-It is a mini cryptocurrency platform which provides some informations about available coins. 
+It is a mini cryptocurrency platform which provides some informations about available coins.
 The project includes these features:
 
 - A List of available coins with general informations
@@ -14,10 +14,12 @@ The app is using [Nomics API](https://nomics.com/docs/) as API.
 ![screenshot](./public/cryptos.gif)
 
 ## Live Demo
+
 Please check [live demo of the project.](http://react-cryptos.herokuapp.com/)
 
 ## Presentation
-Watch [my presentation video.]()
+
+Watch [my presentation video.](https://www.loom.com/share/1db1645e9c224988958625c2628843fb)
 
 ## Getting Started
 
@@ -27,14 +29,12 @@ To get a local copy up and running follow these simple example steps.
 
 Make sure Node.js is running on your local machine.
 
-
 ## Setup
 
 - Clone this repository
 - Open terminal
 - Change directory by using `cd cryptos`
 - Run `npm install`
-
 
 ### Usage
 
@@ -60,7 +60,6 @@ Reach out to me at one of the following places!
 - Github: [@ericmbouwe](https://github.com/ericmbouwe)
 - Twitter: [@ericmbouwe](https://twitter.com/ericmbouwe)
 - Mail: [ericmbouwe@gmail.com](ericmbouwe@gmail.com)
-
 
 ## 🤝 Contributing
 
