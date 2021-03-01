@@ -50,7 +50,7 @@ export const getCoinList = (curFilter, page) => async dispatch => {
   try {
     dispatch(requestingData());
     const response = await axios.get(
-      `https://api.nomics.com/v1/currencies/ticker?key=${key}&interval=1d,30d&convert=${curFilter}&per-page=${perPage}&page=${page}`,
+      `https://api.nomics.com/v1/currencies/ticker?key=${key}&interval=1d,30d&convert=${curFilter}&per-page=${perPage}&page=${page}&cors=true`,
     );
     dispatch(receivedData(response));
   } catch (e) {
