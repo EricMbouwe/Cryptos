@@ -3,13 +3,6 @@ import * as actions from './actionTypes';
 
 const key = '75148c0f430a70d9116c78b9c9431efe';
 const perPage = 20;
-// const data = {
-//   headers: {
-//     Accept: 'Application/json',
-//     'Content-Type': 'application/json',
-//     Origin: 'http://react-cryptos.herokuapp.com/',
-//   },
-// };
 
 // Requests actions!
 const requestingData = () => ({ type: actions.REQUESTING_DATA });
@@ -50,7 +43,7 @@ export const getCoinList = (curFilter, page) => async dispatch => {
   try {
     dispatch(requestingData());
     const response = await axios.get(
-      `https://api.nomics.com/v1/currencies/ticker?key=${key}&interval=1d,30d&convert=${curFilter}&per-page=${perPage}&page=${page}&cors=true`,
+      `https://api.nomics.com/v1/currencies/ticker?key=${key}&interval=1d,30d&convert=${curFilter}&per-page=${perPage}&page=${page}`,
     );
     dispatch(receivedData(response));
   } catch (e) {

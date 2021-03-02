@@ -19,6 +19,7 @@ const CoinList = () => {
 
   useEffect(() => {
     fetchData();
+    console.log('LIST', CoinListState);
   }, [filter, page]);
 
   const showData = () => {
