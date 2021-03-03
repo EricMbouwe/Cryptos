@@ -3,6 +3,7 @@ import CoinList from '../containers/CoinList';
 import Coin from '../containers/Coin';
 import '../styles/App.scss';
 import Header from './Header';
+import Footer from './Footer';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/coin/:coin" component={Coin} />
         <Redirect to="/" />
       </Switch>
+      <Footer />
     </div>
   );
 }

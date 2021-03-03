@@ -1,3 +1,14 @@
 @import 'variables';
 @import 'mixins';
 @import 'globals';
+
+.footer {
+  background-color: #121d33;
+  padding: 1rem;
+
+  a {
+    color: #fff;
+    font-weight: 500;
+    font-size: .8rem;
+  }
+}
