@@ -23,7 +23,7 @@ const Coin = ({ match }) => {
 
     if (CoinState.fetching) {
       return (
-        <div className="container coin--spinner flex flex-jc-c flex-ai-c">
+        <div className="coin--spinner flex flex-jc-c flex-ai-c">
           <Loader type="Grid" color="#121d33" height={100} width={100} />
           <p>Loading description</p>
         </div>
@@ -31,16 +31,16 @@ const Coin = ({ match }) => {
     }
 
     if (CoinState.message !== '') {
-      return <p className="container">{CoinState.message}</p>;
+      return <p>{CoinState.message}</p>;
     }
 
     if (coin && coin.error) {
-      return <p className="container">{coin.error}</p>;
+      return <p>{coin.error}</p>;
     }
 
     if (coin) {
       return (
-        <div className="container">
+        <div>
           <div className="infos flex flex-ai-c">
             <img src={coin.logo_url} alt="" className="img-fluid" />
             <span>{coin.name}</span>
@@ -78,10 +78,14 @@ const Coin = ({ match }) => {
       );
     }
 
-    return <p className="container">Unable to get data</p>;
+    return <p>Unable to get data</p>;
   };
 
-  return <div className="coin">{showData()}</div>;
+  return (
+    <div className="coin">
+      <div className="container">{showData()}</div>
+    </div>
+  );
 };
 
 Coin.propTypes = {

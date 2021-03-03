@@ -15,7 +15,7 @@ The app is using [Nomics API](https://nomics.com/docs/) as API.
 
 ## Live Demo
 
-Please check [live demo of the project.](http://react-cryptos.herokuapp.com/)
+Please check [live demo of the project.](https://react-cryptos.herokuapp.com/)
 
 ## Presentation
 

@@ -18,10 +18,10 @@ const receivedALLData = response => ({
   payload: response.data,
 });
 
-const receivedUnitData = (res1, res2, symbol, filter) => ({
+const receivedUnitData = (res1, symbol, filter) => ({
   type: actions.RECEIVED_UNIT_DATA,
   payload: res1.data,
-  desc: res2.data,
+  // desc: res2.data,
   coinSymbol: symbol,
   curfilter: filter,
 });
@@ -57,10 +57,10 @@ export const getCoin = (coinSymbol, curFilter) => async dispatch => {
     const response1 = await axios.get(
       `https://api.nomics.com/v1/currencies/ticker?key=${key}&ids=${coinSymbol}&interval=1d,30d&convert=${curFilter}`,
     );
-    const response2 = await axios.get(
-      `https://api.nomics.com/v1/currencies?key=${key}&ids=${coinSymbol}&attributes=description`,
-    );
-    dispatch(receivedUnitData(response1, response2, coinSymbol, curFilter));
+    // const response2 = await axios.get(
+    //   `https://api.nomics.com/v1/currencies?key=${key}&ids=${coinSymbol}&attributes=description`,
+    // );
+    dispatch(receivedUnitData(response1, coinSymbol, curFilter));
   } catch (e) {
     dispatch(requestingFailed());
   }

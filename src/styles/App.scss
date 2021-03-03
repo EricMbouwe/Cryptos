@@ -1,3 +1,7 @@
 @import 'variables';
 @import 'mixins';
 @import 'globals';
+
+.App {
+  position: relative;
+}

@@ -68,8 +68,7 @@
 
   &--pagination {
     display: flex;
-    justify-content: space-between;
-    width: 40%;
+    width: fit-content;
     margin: 2.5rem auto;
     padding: 0.5rem 2rem;
     background-color: $veryLightGray;
