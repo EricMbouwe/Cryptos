@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { changeInputSearchValue } from '../actions/actionCreator';
@@ -7,13 +7,7 @@ const SearchInput = () => {
   const [searchResults, setSearchResults] = useState([]);
   const SearchInputState = useSelector(state => state.searchInput);
   const fullCoinListState = useSelector(state => state.coinList);
-  // const fullCoinListState = useSelector(state => state.fullCoinList);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    // dispatch(getAllCoins());
-    // console.log('FULL COIN LIST', fullCoinListState);
-  }, []);
 
   const handleChange = e => {
     const val = e.target.value;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import Filter from './Filter';
-import SearchInput from './SearchInput';
+import Filter from '../containers/Filter';
+import SearchInput from '../containers/SearchInput';
 import '../styles/Header.scss';
 
 const Header = () => (
