@@ -55,6 +55,7 @@
           &:focus {
             outline: none;
             border-color: $lightGrayishBlue;
+            box-shadow: 1px 1px 16px (rgba($color: #000, $alpha: 0.05));
           }
         }
 
@@ -133,7 +134,7 @@
 
           &:focus {
             outline: none;
-            border-color: $darkBlue;
+            border-color: $grayishBlue;
           }
 
           &:hover {
