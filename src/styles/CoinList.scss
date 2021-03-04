@@ -64,6 +64,17 @@
         margin-left: 10px;
       }
     }
+
+    .change {
+      font-weight: 600;
+
+      &__green {
+        color: rgb(0, 135, 90);
+      }
+      &__red {
+        color: rgb(217, 59, 48);
+      }
+    }
   }
 
   &--pagination {

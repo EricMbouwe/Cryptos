@@ -60,26 +60,38 @@ const CoinList = () => {
                 <span>{coin.symbol}</span>
               </div>
               <div className="price flex flex-ai-c">
-                {filter === 'USD' && <span>$ </span>}
-                {filter === 'EUR' && <span>€ </span>}
-                {filter === 'GBP' && <span>£ </span>}
-                {filter === 'XAF' && <span>XAF </span>}
-                {filter === 'JPY' && <span>¥ </span>}
-                {filter === 'CNY' && <span>¥ </span>}
+                {filter === 'USD' && <span>$</span>}
+                {filter === 'EUR' && <span>€</span>}
+                {filter === 'GBP' && <span>£</span>}
+                {filter === 'XAF' && <span>XAF</span>}
+                {filter === 'JPY' && <span>¥</span>}
+                {filter === 'CNY' && <span>¥</span>}
                 <span>{coin.price}</span>
               </div>
               <div className="market-cap flex flex-ai-c">
-                {filter === 'USD' && <span>$ </span>}
-                {filter === 'EUR' && <span>€ </span>}
-                {filter === 'GBP' && <span>£ </span>}
-                {filter === 'XAF' && <span>XAF </span>}
-                {filter === 'JPY' && <span>¥ </span>}
-                {filter === 'CNY' && <span>¥ </span>}
+                {filter === 'USD' && <span>$</span>}
+                {filter === 'EUR' && <span>€</span>}
+                {filter === 'GBP' && <span>£</span>}
+                {filter === 'XAF' && <span>XAF</span>}
+                {filter === 'JPY' && <span>¥</span>}
+                {filter === 'CNY' && <span>¥</span>}
                 <span>{coin.market_cap}</span>
               </div>
-              <div className="change flex flex-ai-c">
-                {coin['1d']?.price_change_pct}
-              </div>
+
+              {parseFloat(coin['1d']?.price_change_pct) > 0 && (
+                <div className="change change__green flex flex-ai-c">
+                  <span>+</span>
+                  {(coin['1d']?.price_change_pct * 100).toFixed(2)}
+                  <span>%</span>
+                </div>
+              )}
+
+              {parseFloat(coin['1d']?.price_change_pct) < 0 && (
+                <div className="change change__red flex flex-ai-c">
+                  {(coin['1d']?.price_change_pct * 100).toFixed(2)}
+                  <span>%</span>
+                </div>
+              )}
             </Link>
           ))}
         </div>
