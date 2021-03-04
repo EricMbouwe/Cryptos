@@ -126,7 +126,7 @@
           height: 100%;
           font-size: 1rem;
           font-weight: 600;
-          border: 1px solid $lightGrayishBlue;
+          border: 2px solid $lightGrayishBlue;
           color: $darkBlue;
           padding: 0.8rem 1rem;
           border-radius: 10px;
@@ -137,7 +137,7 @@
           }
 
           &:hover {
-            border-color: $darkBlue;
+            border-color: $grayishBlue;
           }
 
           > option {

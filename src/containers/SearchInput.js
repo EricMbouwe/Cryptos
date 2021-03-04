@@ -44,7 +44,7 @@ const SearchInput = () => {
         type="text"
         onChange={handleChange}
         value={SearchInputState}
-        placeholder="Find a coin Ex: Bitcoin, Tezos"
+        placeholder="Search a coin   Ex: Bitcoin, Dogecoin"
         autoComplete="off"
       />
 

@@ -27,7 +27,7 @@ const CoinList = () => {
     if (CoinListState.fetching) {
       return (
         <div className="coinList--spiner flex flex-jc-c flex-ai-c">
-          <Loader type="Grid" color="#121d33" height={100} width={100} />
+          <Loader type="Grid" color="#121d33" height={70} width={70} />
           <p>Loading List</p>
         </div>
       );

@@ -24,7 +24,7 @@ const Coin = ({ match }) => {
     if (CoinState.fetching) {
       return (
         <div className="coin--spinner flex flex-jc-c flex-ai-c">
-          <Loader type="Grid" color="#121d33" height={100} width={100} />
+          <Loader type="Grid" color="#121d33" height={70} width={70} />
           <p>Loading description</p>
         </div>
       );
