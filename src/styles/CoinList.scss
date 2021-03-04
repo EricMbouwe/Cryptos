@@ -71,6 +71,7 @@
       &__green {
         color: rgb(0, 135, 90);
       }
+
       &__red {
         color: rgb(217, 59, 48);
       }
@@ -79,7 +80,7 @@
 
   &--pagination {
     display: flex;
-    width: fit-content;
+    width: max-content;
     margin: 2.5rem auto;
     padding: 0.5rem 2rem;
     background-color: $veryLightGray;

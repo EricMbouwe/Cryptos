@@ -66,7 +66,7 @@ const CoinList = () => {
                 {filter === 'XAF' && <span>XAF</span>}
                 {filter === 'JPY' && <span>¥</span>}
                 {filter === 'CNY' && <span>¥</span>}
-                <span>{coin.price}</span>
+                <span>{parseFloat(coin.price).toFixed(5)}</span>
               </div>
               <div className="market-cap flex flex-ai-c">
                 {filter === 'USD' && <span>$</span>}
