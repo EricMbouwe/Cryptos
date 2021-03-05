@@ -6,7 +6,11 @@ const Footer = () => (
       <a href="https://nomics.com" target="blank">
         Crypto Market Cap & Pricing Data Provided By Nomics
       </a>
-      <span>&copy;2021 Le Consultant</span>
+      <span>
+        <a href="https://ericmbouwe.netlify.app" target="blank">
+          &copy;2021 Le Consultant
+        </a>
+      </span>
     </div>
   </div>
 );
