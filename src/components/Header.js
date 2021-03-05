@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Filter from '../containers/Filter';
 import SearchInput from '../containers/SearchInput';
 import '../styles/Header.scss';
@@ -8,9 +8,9 @@ const Header = () => (
   <div className="header">
     <nav>
       <div className="container">
-        <NavLink className="logo" to="/">
+        <Link className="logo" to="/">
           CRYPTOS
-        </NavLink>
+        </Link>
       </div>
     </nav>
 
