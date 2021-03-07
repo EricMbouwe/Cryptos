@@ -102,7 +102,7 @@ const CoinList = () => {
   };
 
   return (
-    <div className="coinList container">
+    <div className="coinList container" role="list">
       <h1 className="coinList--title">Best Prices</h1>
       {showData()}
       {CoinListState.data.length > 0 && (
