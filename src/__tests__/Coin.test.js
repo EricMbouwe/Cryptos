@@ -1,44 +1,23 @@
-// import React from 'react';
-// import { rest } from 'msw';
-// import { setupServer } from 'msw/node';
-// import { render, fireEvent, waitFor, screen } from '@testing-library/react';
-// import '@testing-library/jest-dom/extend-expect';
-// import Coin from '../containers/Coin';
+import '@testing-library/jest-dom/extend-expect';
 
-// const server = setupServer(
-//   rest.get('/', (req, res, ctx) => {
-//     return res(ctx.json({ data: [] }));
-//   }),
-// );
+import { getCoin } from '../actions/actionCreator';
+import { server, rest } from '../testServer';
 
-// beforeAll(() => server.listen());
-// afterEach(() => server.resetHandlers());
-// afterAll(() => server.close());
+it('fetchs data correctly', async () => {
+  const response = await getCoin('BTC','USD');
+  expect(response).not.toBeNull;
+  expect(response.length).toEqual(1);
+});
 
-// test('loads and displays the coin page details', async () => {
-//   render(<Coin url="/coin" />);
+it('handles failure', async () => {
+  server.use(
+    rest.get(
+      'https://api.nomics.com/v1/currencies/ticker',
+      (_req, res, ctx) => {
+        return res(ctx.status(404));
+      },
+    ),
+  );
 
-//   fireEvent.click(screen.getByText('Load Greeting'));
-
-//   await waitFor(() => screen.getByRole('heading'));
-
-//   expect(screen.getByRole('heading')).toHaveTextContent('hello there');
-//   expect(screen.getByRole('button')).toHaveAttribute('disabled');
-// });
-
-// test('handles server error when fetching the coin page details', async () => {
-//   server.use(
-//     rest.get('/coin', (req, res, ctx) => {
-//       return res(ctx.status(500));
-//     }),
-//   );
-
-//   render(<Coin url="/coin" />);
-
-//   fireEvent.click(screen.getByText('Load Greeting'));
-
-//   await waitFor(() => screen.getByRole('alert'));
-
-//   expect(screen.getByRole('alert')).toHaveTextContent('Oops, failed to fetch!');
-//   expect(screen.getByRole('button')).not.toHaveAttribute('disabled');
-// });
+  await expect(getCoin('BTC', 'USD')).rejects.toBeCalled;
+});
