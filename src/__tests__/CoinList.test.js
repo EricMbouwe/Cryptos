@@ -1,43 +1,82 @@
-// import React from 'react';
-// import { rest } from 'msw';
-// import { setupServer } from 'msw/node';
-// import { render, fireEvent, waitFor, screen } from '@testing-library/react';
-// import '@testing-library/jest-dom/extend-expect';
-// import CoinList from '../containers/CoinList';
+import React from 'react';
+import '@testing-library/jest-dom/extend-expect';
+import { render, fireEvent, cleanup } from '@testing-library/react';
+import { createStore } from 'redux';
+import * as reactRedux from 'react-redux';
+import { Provider } from 'react-redux';
+import CoinListReducer from '../reducers/coinList';
 
-// const server = setupServer(
-//   rest.get('/', (req, res, ctx) => {
-//     return res(ctx.json({ data: [] }));
-//   }),
-// );
+import CoinList from '../containers/CoinList';
+import { getCoinList } from '../actions/actionCreator';
+import { server, rest } from '../testServer';
 
-// beforeAll(() => server.listen());
-// afterEach(() => server.resetHandlers());
-// afterAll(() => server.close());
+const useSelectorMock = jest.spyOn(reactRedux, 'useSelector');
+const useDispatchMock = jest.spyOn(reactRedux, 'useDispatch');
 
-// test('loads and displays the coins list', async () => {
-//   render(<CoinList url="/" />);
+const coins = {
+  data: [
+    {
+      id: 'BTC',
+      currency: 'BTC',
+      symbol: 'BTC',
+      name: 'Bitcoin',
+    },
+    {
+      id: 'ETH',
+      currency: 'ETH',
+      symbol: 'ETH',
+      name: 'Ethereum',
+    },
+  ],
+};
 
-//   fireEvent.click(screen.getByText('Load Greeting'));
+function renderWithRedux(
+  component,
+  { initialState, Store = createStore(CoinListReducer, initialState) } = {},
+) {
+  return {
+    ...render(<Provider store={Store}>{component}</Provider>),
+  };
+}
 
-//   await waitFor(() => screen.getByRole('list'));
+beforeEach(() => {
+  useSelectorMock.mockClear();
+  useDispatchMock.mockClear();
+});
 
-//   expect(screen.getByRole('list')).toHaveTextContent('Rank');
-// });
+it('fetchs data correctly', async () => {
+  const response = await getCoinList('USD', 1);
+  expect(response).not.toBeNull;
+  expect(response.length).toEqual(1);
+});
 
-// test('handles server error when fetching the coins list', async () => {
-//   server.use(
-//     rest.get('/', (req, res, ctx) => {
-//       return res(ctx.status(500));
-//     }),
-//   );
+it('handles failure', async () => {
+  server.use(
+    rest.get(
+      'https://api.nomics.com/v1/currencies/ticker',
+      (_req, res, ctx) => {
+        return res(ctx.status(404));
+      },
+    ),
+  );
 
-//   render(<CoinList url="/" />);
+  await expect(getCoinList('USD', 1)).rejects.toBeCalled;
+});
 
-//   fireEvent.click(screen.getByText('Load Greeting'));
+it('renders loading state followed by coins', async () => {
+  const list = useSelectorMock.mockReturnValue({ coins });
 
-//   await waitFor(() => screen.getByRole('alert'));
+  const component = renderWithRedux(<CoinList />, {
+    initialState: list,
+  });
 
-//   expect(screen.getByRole('alert')).toHaveTextContent('Oops, failed to fetch!');
-//   expect(screen.getByRole('button')).not.toHaveAttribute('disabled');
-// });
+  expect(component.find('[data-test-id="loading-coins"]').text()).toBe(
+    'Loading…',
+  );
+  expect(component.find('[data-test-id="coins"]').exists()).toBe(false);
+  expect(component.find('[data-test-id="coin-BTC"]').text()).toMatch('Bitcoin');
+  expect(component.find('[data-test-id="coin-ETH"]').text()).toMatch(
+    'Ethereum',
+  );
+  expect(component.find('[data-test-id="loading-coins"]').exists()).toBe(false);
+});

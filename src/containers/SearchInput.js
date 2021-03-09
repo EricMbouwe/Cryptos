@@ -1,24 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { changeInputSearchValue } from '../actions/actionCreator';
 
 const SearchInput = () => {
-  const [searchResults, setSearchResults] = useState([]);
   const SearchInputState = useSelector(state => state.searchInput);
-  const fullCoinListState = useSelector(state => state.coinList);
+  const CoinListState = useSelector(state => state.coinList);
   const dispatch = useDispatch();
 
   const handleChange = e => {
     const val = e.target.value;
     dispatch(changeInputSearchValue(val));
-    const regex = new RegExp(val, 'i');
-    setSearchResults(
-      fullCoinListState.data.filter(
-        coin => regex.test(coin.name) || regex.test(coin.symbol),
-      ),
+  };
+
+  const getSearchResults = (input, list) => {
+    const regex = new RegExp(input, 'i');
+    return list.filter(
+      coin => regex.test(coin.name) || regex.test(coin.symbol),
     );
   };
+
+  const searchResults = getSearchResults(SearchInputState, CoinListState.data);
 
   const displaySearchList = searchResults.map(coin => (
     <li key={coin.id}>
@@ -41,6 +43,7 @@ const SearchInput = () => {
   return (
     <div className="search-wrapper">
       <input
+        data-testid="search"
         type="text"
         onChange={handleChange}
         value={SearchInputState}
@@ -49,7 +52,7 @@ const SearchInput = () => {
       />
 
       <div>
-        <ul className="search-results">
+        <ul data-testid="search-results" className="search-results">
           {SearchInputState !== ' ' && SearchInputState !== '' && displaySearchList}
         </ul>
       </div>

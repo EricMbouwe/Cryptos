@@ -26,7 +26,10 @@ const CoinList = () => {
 
     if (CoinListState.fetching) {
       return (
-        <div className="coinList--spiner flex flex-jc-c flex-ai-c">
+        <div
+          data-test-id="loading-coins"
+          className="coinList--spiner flex flex-jc-c flex-ai-c"
+        >
           <Loader type="Grid" color="#121d33" height={70} width={70} />
           <p>Loading List</p>
         </div>
@@ -39,7 +42,7 @@ const CoinList = () => {
 
     if (data.length > 0) {
       return (
-        <div className="coinList--wrapper">
+        <div data-test-id="coins" className="coinList--wrapper">
           <div className="titles">
             <h4>Rank</h4>
             <h4>Name</h4>
@@ -49,6 +52,7 @@ const CoinList = () => {
           </div>
           {data.map(coin => (
             <Link
+              data-test-id={`coin-${coin.id}`}
               key={coin.id}
               to={`coin/${coin.symbol}`}
               className="coinList--row"

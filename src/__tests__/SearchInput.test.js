@@ -1,14 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import configureStore from 'redux-mock-store';
-import {
-  render,
-  fireEvent,
-  screen,
-  cleanup,
-  queryByPlaceholderText,
-} from '@testing-library/react';
+import { render, fireEvent, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import searchInputReducer from '../reducers/searchInput';
 import SearchInput from '../containers/SearchInput';
@@ -37,15 +30,26 @@ it('renders correctly', () => {
 describe('Input value', () => {
   it('can update on change', () => {
     const { queryByPlaceholderText } = renderWithRedux(<SearchInput />);
-    const searchInput = queryByPlaceholderText('Search a coin Ex: Bitcoin, Dogecoin');
+    const searchInput = queryByPlaceholderText(
+      'Search a coin Ex: Bitcoin, Dogecoin',
+    );
     fireEvent.change(searchInput, { target: { value: 'btc' } });
     expect(searchInput.value).toBe('btc');
   });
 
+  it('renders the actual value on change', () => {
+    const { queryByPlaceholderText } = renderWithRedux(<SearchInput />);
+    const searchInput = queryByPlaceholderText(
+      'Search a coin Ex: Bitcoin, Dogecoin',
+    );
+    fireEvent.change(searchInput, { target: { value: 'dogecoin' } });
+    expect(searchInput.value).not.toBe('bitcoin');
+  });
+
   it('can have an initial state', () => {
-    // const { queryByPlaceholderText } = renderWithRedux(<SearchInput />, {
-    //   initialState: 'btc',
-    // });
-    // expect(queryByPlaceholderText).toHaveTextContent('btc');
+    const { queryByTestId } = renderWithRedux(<SearchInput />, {
+      initialState: 'btc',
+    });
+    expect(queryByTestId('search')).not.toHaveTextContent('btcc');
   });
 });
