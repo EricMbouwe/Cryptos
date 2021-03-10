@@ -1,0 +1,155 @@
+@import 'variables';
+@import 'mixins';
+
+.header {
+  min-height: 12.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  nav {
+    background-color: #121d33;
+    padding: 1.2rem;
+
+    a {
+      color: #fff;
+      font-weight: 800;
+    }
+  }
+
+  .line2 {
+    .container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .title {
+      font-size: 2.5rem;
+      font-weight: 600;
+      width: 50%;
+    }
+
+    .searchFilterWrapper {
+      display: flex;
+      justify-content: space-between;
+      width: 50%;
+
+      .search-wrapper {
+        position: relative;
+        flex-basis: 80%;
+
+        > input {
+          width: 100%;
+          height: 100%;
+          font-size: $font-med;
+          color: $grayishBlue;
+          padding: 0.8rem 1rem;
+          border: 1px solid $lightGrayishBlue;
+          border-radius: 10px;
+
+          &::placeholder {
+            color: $grayishBlue;
+            font-size: $font-sm;
+          }
+
+          &:focus {
+            outline: none;
+            border-color: $lightGrayishBlue;
+            box-shadow: 1px 1px 16px (rgba($color: #000, $alpha: 0.05));
+          }
+        }
+
+        .search-results {
+          display: block;
+          position: absolute;
+          top: 100%;
+          margin-top: 0.2rem;
+          padding: 0;
+          width: 100%;
+          max-height: 500px;
+          overflow-y: scroll;
+          scrollbar-width: none;
+          background-color: $white;
+          box-shadow: 5px 5px 18px rgba($color: #000, $alpha: 0.15);
+          border-radius: 10px;
+
+          &::-webkit-scrollbar {
+            width: 10px;
+          }
+
+          /* Handle */
+          &::-webkit-scrollbar-thumb {
+            background: $lightGrayishBlue;
+          }
+
+          /* Handle on hover */
+          &::-webkit-scrollbar-thumb:hover {
+            background: $grayishBlue;
+          }
+
+          li {
+            padding: 0.7rem 1.5rem;
+
+            &:hover {
+              background-color: $veryLightGray;
+            }
+
+            .coin-details {
+              display: flex;
+              align-items: center;
+
+              img {
+                width: 5px;
+                margin-right: 1rem;
+                flex-basis: 8%;
+              }
+
+              > span {
+                flex-basis: 70%;
+                font-weight: 500;
+
+                .symbol {
+                  font-weight: 500;
+                  color: $grayishBlue;
+                  margin-left: 0.2rem;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .filter-wrapper {
+        flex-basis: auto;
+
+        > select {
+          width: 100%;
+          height: 100%;
+          font-size: 1rem;
+          font-weight: 600;
+          border: 2px solid $lightGrayishBlue;
+          color: $darkBlue;
+          padding: 0.8rem 1rem;
+          border-radius: 10px;
+
+          &:focus {
+            outline: none;
+            border-color: $grayishBlue;
+          }
+
+          &:hover {
+            border-color: $grayishBlue;
+          }
+
+          > option {
+            font-weight: 500;
+
+            &:hover {
+              background-color: $darkBlue !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
