@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { changeInputSearchValue } from '../actions/actionCreator';
+import SearchResults from '../components/SearchResults';
 
 const SearchInput = () => {
   const SearchInputState = useSelector(state => state.searchInput);
@@ -20,26 +20,6 @@ const SearchInput = () => {
     );
   };
 
-  const searchResults = getSearchResults(SearchInputState, CoinListState.data);
-
-  const displaySearchList = searchResults.map(coin => (
-    <li key={coin.id}>
-      <Link to={`/coin/${coin.symbol}`}>
-        <div className="coin-details">
-          <img src={coin.logo_url} alt="" className="img-fluid" />
-          <span>
-            <span>{coin.name}</span>
-            <span className="symbol">
-              (
-              {coin.symbol}
-              )
-            </span>
-          </span>
-        </div>
-      </Link>
-    </li>
-  ));
-
   return (
     <div className="search-wrapper">
       <input
@@ -50,12 +30,11 @@ const SearchInput = () => {
         placeholder="Search a coin   Ex: Bitcoin, Dogecoin"
         autoComplete="off"
       />
-
-      <div>
-        <ul data-testid="search-results" className="search-results">
-          {SearchInputState !== ' ' && SearchInputState !== '' && displaySearchList}
-        </ul>
-      </div>
+      <SearchResults
+        getSearch={getSearchResults}
+        input={SearchInputState}
+        list={CoinListState.data}
+      />
     </div>
   );
 };

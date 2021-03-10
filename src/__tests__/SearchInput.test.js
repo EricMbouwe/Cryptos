@@ -8,14 +8,12 @@ import searchInputReducer from '../reducers/searchInput';
 import SearchInput from '../containers/SearchInput';
 import CoinList from '../containers/CoinList';
 
+const useSelectorMock = jest.spyOn(reactRedux, 'useSelector');
+
 afterEach(cleanup);
 beforeEach(() => {
   useSelectorMock.mockClear();
-  useDispatchMock.mockClear();
 });
-
-const useSelectorMock = jest.spyOn(reactRedux, 'useSelector');
-const useDispatchMock = jest.spyOn(reactRedux, 'useDispatch');
 
 function renderWithRedux(
   component,
@@ -27,10 +25,7 @@ function renderWithRedux(
 }
 
 it('renders correctly', () => {
-  const { queryByTestId, queryByPlaceholderText } = renderWithRedux(
-    <SearchInput />,
-  );
-  expect(queryByTestId('search-results')).toBeTruthy();
+  const { queryByPlaceholderText } = renderWithRedux(<SearchInput />);
   expect(
     queryByPlaceholderText('Search a coin Ex: Bitcoin, Dogecoin'),
   ).toBeTruthy();
