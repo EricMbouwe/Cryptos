@@ -2,54 +2,59 @@
 @import 'mixins';
 
 .coin {
-  margin-top: 4rem;
+	margin-top: 4rem;
+	min-height: 85vh;
 
-  &--spinner {
-    flex-direction: column;
-    height: 50vh;
-  }
+	@include breakpoint-down(medium) {
+		padding: 0 1rem;
+	}
 
-  .suppl {
-    margin-top: 1rem;
+	&--spinner {
+		flex-direction: column;
+		height: 50vh;
+	}
 
-    span {
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
+	.suppl {
+		margin-top: 1rem;
 
-    .max-supply {
-      margin-left: 0.5rem;
-    }
+		span {
+			font-size: 0.9rem;
+			font-weight: 600;
+		}
 
-    .height {
-      margin-right: 0.5rem;
-    }
-  }
+		.max-supply {
+			margin-left: 0.5rem;
+		}
 
-  .infos {
-    font-size: 2rem;
+		.height {
+			margin-right: 0.5rem;
+		}
+	}
 
-    img {
-      width: 50px;
-      margin-right: 1rem;
-    }
+	.infos {
+		font-size: 2rem;
 
-    > span:first-of-type {
-      margin-right: 0.5rem;
-      font-weight: 600;
-    }
+		img {
+			width: 50px;
+			margin-right: 1rem;
+		}
 
-    .price {
-      margin-left: 1rem;
-      font-weight: 600;
-    }
-  }
+		> span:first-of-type {
+			margin-right: 0.5rem;
+			font-weight: 600;
+		}
 
-  .description {
-    p {
-      text-align: justify;
-      font-size: 1rem;
-      line-height: 1.9;
-    }
-  }
+		.price {
+			margin-left: 1rem;
+			font-weight: 600;
+		}
+	}
+
+	.description {
+		p {
+			text-align: justify;
+			font-size: 1rem;
+			line-height: 1.9;
+		}
+	}
 }

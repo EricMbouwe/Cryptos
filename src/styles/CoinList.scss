@@ -2,109 +2,114 @@
 @import 'mixins';
 
 .coinList {
-  margin-top: 2rem !important;
+	margin-top: 2rem !important;
+	min-height: 86.5vh;
 
-  &--spiner {
-    flex-direction: column;
-    height: 50vh;
-  }
+	@include breakpoint-down(medium) {
+		padding: 0 1rem;
+	}
 
-  &--wrapper {
-    .titles {
-      display: grid;
-      grid-template-columns: 90px 2fr repeat(3, 1fr);
-      grid-template-rows: 60px;
-      border-bottom: 1px solid $lightGrayishBlue;
+	&--spiner {
+		flex-direction: column;
+		height: 50vh;
+	}
 
-      h4 {
-        font-weight: 600;
-      }
-    }
-  }
+	&--wrapper {
+		.titles {
+			display: grid;
+			grid-template-columns: 90px 2fr repeat(3, 1fr);
+			grid-template-rows: 60px;
+			border-bottom: 1px solid $lightGrayishBlue;
 
-  &--title {
-    font-size: $font-lg;
-    color: $grayishBlue;
-    font-weight: 600;
-    margin-bottom: 2rem;
-  }
+			h4 {
+				font-weight: 600;
+			}
+		}
+	}
 
-  &--row {
-    display: grid;
-    grid-template-columns: 90px 2fr repeat(3, 1fr);
-    grid-template-rows: 60px;
-    font-size: 1rem;
-    font-weight: 500;
-    border-bottom: 1px solid $lightGrayishBlue;
+	&--title {
+		font-size: $font-lg;
+		color: $grayishBlue;
+		font-weight: 600;
+		margin-bottom: 2rem;
+	}
 
-    &:hover {
-      background-color: $veryLightGray;
-    }
+	&--row {
+		display: grid;
+		grid-template-columns: 90px 2fr repeat(3, 1fr);
+		grid-template-rows: 60px;
+		font-size: 1rem;
+		font-weight: 500;
+		border-bottom: 1px solid $lightGrayishBlue;
 
-    .rank {
-      padding: 0 1rem;
-    }
+		&:hover {
+			background-color: $veryLightGray;
+		}
 
-    .price,
-    .market-cap {
-      > span {
-        margin-right: 0.5rem;
-        font-weight: 600;
-      }
-    }
+		.rank {
+			padding: 0 1rem;
+		}
 
-    .details {
-      img {
-        width: 25px;
-        margin-right: 20px;
-      }
+		.price,
+		.market-cap {
+			> span {
+				margin-right: 0.5rem;
+				font-weight: 600;
+			}
+		}
 
-      span:nth-of-type(2) {
-        font-weight: 800;
-        margin-left: 10px;
-      }
-    }
+		.details {
+			img {
+				width: 25px;
+				margin-right: 20px;
+			}
 
-    .change {
-      font-weight: 600;
+			span:nth-of-type(2) {
+				font-weight: 800;
+				margin-left: 10px;
+			}
+		}
 
-      &__green {
-        color: rgb(0, 135, 90);
-      }
+		.change {
+			font-weight: 600;
 
-      &__red {
-        color: rgb(217, 59, 48);
-      }
-    }
-  }
+			&__green {
+				color: rgb(0, 135, 90);
+			}
 
-  &--pagination {
-    display: flex;
-    width: max-content;
-    margin: 2.5rem auto;
-    padding: 0.5rem 2rem;
-    background-color: $veryLightGray;
-    border-radius: 10px;
+			&__red {
+				color: rgb(217, 59, 48);
+			}
+		}
+	}
 
-    li {
-      padding: 0.5rem 1rem;
-      border-radius: 10px;
+	&--pagination {
+		display: flex;
+		width: max-content;
+		margin: 2.5rem auto;
+		padding: 0.5rem 2rem;
+		background-color: $veryLightGray;
+		border-radius: 10px;
 
-      a {
-        cursor: pointer;
+		li {
+			padding: 0.5rem 1rem;
+			border-radius: 10px;
 
-        &:focus {
-          outline: none;
-        }
-      }
+			a {
+				cursor: pointer;
 
-      &.selected {
-        background-color: $grayishBlue;
+				&:focus {
+					outline: none;
+				}
+			}
 
-        a {
-          color: $white;
-        }
-      }
-    }
-  }
+			&.selected {
+				background-color: $grayishBlue;
+
+				a {
+					color: $white;
+				}
+			}
+		}
+	}
 }
