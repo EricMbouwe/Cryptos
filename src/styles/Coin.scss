@@ -3,6 +3,11 @@
 
 .coin {
   margin-top: 4rem;
+  min-height: 85vh;
+
+  @include breakpoint-down(medium) {
+    padding: 0 1rem;
+  }
 
   &--spinner {
     flex-direction: column;

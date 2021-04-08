@@ -14,6 +14,7 @@
     a {
       color: #fff;
       font-weight: 800;
+      font-size: 2rem;
     }
   }
 
@@ -21,12 +22,18 @@
     .container {
       display: flex;
       justify-content: space-between;
+
+      @include breakpoint-down(medium) {
+        padding: 0 1rem;
+      }
     }
 
     .title {
-      font-size: 2.5rem;
+      text-transform: uppercase;
+      font-size: 1.7rem;
       font-weight: 600;
       width: 50%;
+      visibility: hidden;
     }
 
     .searchFilterWrapper {
@@ -55,7 +62,9 @@
           &:focus {
             outline: none;
             border-color: $lightGrayishBlue;
-            box-shadow: 1px 1px 16px (rgba($color: #000, $alpha: 0.05));
+            box-shadow:
+              1px 1px 16px
+              (rgba($color: #000, $alpha: 0.05));
           }
         }
 

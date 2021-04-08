@@ -3,6 +3,11 @@
 
 .coinList {
   margin-top: 2rem !important;
+  min-height: 86.5vh;
+
+  @include breakpoint-down(medium) {
+    padding: 0 1rem;
+  }
 
   &--spiner {
     flex-direction: column;
