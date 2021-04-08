@@ -2,114 +2,114 @@
 @import 'mixins';
 
 .coinList {
-	margin-top: 2rem !important;
-	min-height: 86.5vh;
+  margin-top: 2rem !important;
+  min-height: 86.5vh;
 
-	@include breakpoint-down(medium) {
-		padding: 0 1rem;
-	}
+  @include breakpoint-down(medium) {
+    padding: 0 1rem;
+  }
 
-	&--spiner {
-		flex-direction: column;
-		height: 50vh;
-	}
+  &--spiner {
+    flex-direction: column;
+    height: 50vh;
+  }
 
-	&--wrapper {
-		.titles {
-			display: grid;
-			grid-template-columns: 90px 2fr repeat(3, 1fr);
-			grid-template-rows: 60px;
-			border-bottom: 1px solid $lightGrayishBlue;
+  &--wrapper {
+    .titles {
+      display: grid;
+      grid-template-columns: 90px 2fr repeat(3, 1fr);
+      grid-template-rows: 60px;
+      border-bottom: 1px solid $lightGrayishBlue;
 
-			h4 {
-				font-weight: 600;
-			}
-		}
-	}
+      h4 {
+        font-weight: 600;
+      }
+    }
+  }
 
-	&--title {
-		font-size: $font-lg;
-		color: $grayishBlue;
-		font-weight: 600;
-		margin-bottom: 2rem;
-	}
+  &--title {
+    font-size: $font-lg;
+    color: $grayishBlue;
+    font-weight: 600;
+    margin-bottom: 2rem;
+  }
 
-	&--row {
-		display: grid;
-		grid-template-columns: 90px 2fr repeat(3, 1fr);
-		grid-template-rows: 60px;
-		font-size: 1rem;
-		font-weight: 500;
-		border-bottom: 1px solid $lightGrayishBlue;
+  &--row {
+    display: grid;
+    grid-template-columns: 90px 2fr repeat(3, 1fr);
+    grid-template-rows: 60px;
+    font-size: 1rem;
+    font-weight: 500;
+    border-bottom: 1px solid $lightGrayishBlue;
 
-		&:hover {
-			background-color: $veryLightGray;
-		}
+    &:hover {
+      background-color: $veryLightGray;
+    }
 
-		.rank {
-			padding: 0 1rem;
-		}
+    .rank {
+      padding: 0 1rem;
+    }
 
-		.price,
-		.market-cap {
-			> span {
-				margin-right: 0.5rem;
-				font-weight: 600;
-			}
-		}
+    .price,
+    .market-cap {
+      > span {
+        margin-right: 0.5rem;
+        font-weight: 600;
+      }
+    }
 
-		.details {
-			img {
-				width: 25px;
-				margin-right: 20px;
-			}
+    .details {
+      img {
+        width: 25px;
+        margin-right: 20px;
+      }
 
-			span:nth-of-type(2) {
-				font-weight: 800;
-				margin-left: 10px;
-			}
-		}
+      span:nth-of-type(2) {
+        font-weight: 800;
+        margin-left: 10px;
+      }
+    }
 
-		.change {
-			font-weight: 600;
+    .change {
+      font-weight: 600;
 
-			&__green {
-				color: rgb(0, 135, 90);
-			}
+      &__green {
+        color: rgb(0, 135, 90);
+      }
 
-			&__red {
-				color: rgb(217, 59, 48);
-			}
-		}
-	}
+      &__red {
+        color: rgb(217, 59, 48);
+      }
+    }
+  }
 
-	&--pagination {
-		display: flex;
-		width: max-content;
-		margin: 2.5rem auto;
-		padding: 0.5rem 2rem;
-		background-color: $veryLightGray;
-		border-radius: 10px;
+  &--pagination {
+    display: flex;
+    width: max-content;
+    margin: 2.5rem auto;
+    padding: 0.5rem 2rem;
+    background-color: $veryLightGray;
+    border-radius: 10px;
 
-		li {
-			padding: 0.5rem 1rem;
-			border-radius: 10px;
+    li {
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
 
-			a {
-				cursor: pointer;
+      a {
+        cursor: pointer;
 
-				&:focus {
-					outline: none;
-				}
-			}
+        &:focus {
+          outline: none;
+        }
+      }
 
-			&.selected {
-				background-color: $grayishBlue;
+      &.selected {
+        background-color: $grayishBlue;
 
-				a {
-					color: $white;
-				}
-			}
-		}
-	}
+        a {
+          color: $white;
+        }
+      }
+    }
+  }
 }

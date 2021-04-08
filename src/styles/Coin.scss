@@ -2,59 +2,59 @@
 @import 'mixins';
 
 .coin {
-	margin-top: 4rem;
-	min-height: 85vh;
+  margin-top: 4rem;
+  min-height: 85vh;
 
-	@include breakpoint-down(medium) {
-		padding: 0 1rem;
-	}
+  @include breakpoint-down(medium) {
+    padding: 0 1rem;
+  }
 
-	&--spinner {
-		flex-direction: column;
-		height: 50vh;
-	}
+  &--spinner {
+    flex-direction: column;
+    height: 50vh;
+  }
 
-	.suppl {
-		margin-top: 1rem;
+  .suppl {
+    margin-top: 1rem;
 
-		span {
-			font-size: 0.9rem;
-			font-weight: 600;
-		}
+    span {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
 
-		.max-supply {
-			margin-left: 0.5rem;
-		}
+    .max-supply {
+      margin-left: 0.5rem;
+    }
 
-		.height {
-			margin-right: 0.5rem;
-		}
-	}
+    .height {
+      margin-right: 0.5rem;
+    }
+  }
 
-	.infos {
-		font-size: 2rem;
+  .infos {
+    font-size: 2rem;
 
-		img {
-			width: 50px;
-			margin-right: 1rem;
-		}
+    img {
+      width: 50px;
+      margin-right: 1rem;
+    }
 
-		> span:first-of-type {
-			margin-right: 0.5rem;
-			font-weight: 600;
-		}
+    > span:first-of-type {
+      margin-right: 0.5rem;
+      font-weight: 600;
+    }
 
-		.price {
-			margin-left: 1rem;
-			font-weight: 600;
-		}
-	}
+    .price {
+      margin-left: 1rem;
+      font-weight: 600;
+    }
+  }
 
-	.description {
-		p {
-			text-align: justify;
-			font-size: 1rem;
-			line-height: 1.9;
-		}
-	}
+  .description {
+    p {
+      text-align: justify;
+      font-size: 1rem;
+      line-height: 1.9;
+    }
+  }
 }
